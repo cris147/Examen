@@ -34,6 +34,7 @@ public class Examen1P1_CristopherSibrian {
                     descifrarCombinacion();
                     break;
                 case 2:
+                    rotacionCircular();
                     break;
                 case 3:
                     break;
@@ -134,10 +135,77 @@ public class Examen1P1_CristopherSibrian {
     
     public static void rotacionCircular(){
         Scanner tick = new Scanner(System.in);
-        System.out.println("Ingrese el tamano del arreglo");
+        System.out.print("Ingrese el tamano del arreglo: ");
         int juju = tick.nextInt();
         
         
-    
+        
+        
+        
+        if (juju <= 5){
+            System.out.print("El numero debe ser mayor a 5");
+            System.out.println("");
+            return;
+            
+        }
+        int[] arr = llenar(juju);
+        System.out.println("Arreglo original");
+        arreglo(arr);
+        
+        System.out.println("Ingrese la cadena de rotacion (formato i|d:numero)" );
+        String entrada = tick.next();
+        String[] partes = entrada.split(":");
+        char direccion = partes[0].charAt(0);
+        int posiciones = Integer.parseInt(partes[1]);
+        
+        //System.out.print("Arreglo original");
+        //arreglo(arr);
+        
+        
+        arr = rotacion(arr, direccion, posiciones);
+        
+        System.out.print("Arreglo con la rotacion: ");
+        arreglo(arr);
     }
+    
+    public static int[] llenar(int tam){
+        Random ejer2 = new Random();
+        int[] arr = new int[tam];
+        for (int i = 0; i <tam ; i++){
+            arr[i] = ejer2.nextInt(100) + 1;
+        }
+        return arr;
+    }
+    
+    public static int[] rotacion(int[] arr, char direccion, int posiciones){
+        int tam = arr.length;
+        posiciones %= tam;
+        
+        if (direccion == 'i'){
+            for (int j = 0; j<posiciones; j++){
+                int temp = arr[0];
+                for (int h = 0; h<tam-1; h++){
+                    arr[h] = arr[h+1];
+                }
+                arr[tam-1] = temp;
+            }
+        }else if(direccion == 'd'){
+            for (int j= 0; j<posiciones;j++){
+                int temp = arr[tam-1];
+                for (int i = tam-1; i>0; i--){
+                    arr[i] = arr[i-1];
+                }
+                arr[0] = temp;
+            }
+        }
+        return arr;
+    }
+        
+        public static void arreglo(int[] arr){
+            for (int num : arr){
+                System.out.print(num + " ");
+            }
+            System.out.println("");
+        }
+    
 }
