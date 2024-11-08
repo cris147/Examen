@@ -44,6 +44,7 @@ public class Examen1P1_CristopherSibrian {
                     System.out.println("Ingrese una opcion valida");
             }
         } while (resp != 4);
+        System.out.println("Gracias por jugar");
     }
     
     public static void descifrarCombinacion() {
@@ -78,6 +79,11 @@ public class Examen1P1_CristopherSibrian {
         for (int i = 0; i < tam; i++) {
             prog[i] = '-';
         }
+        
+         for (char c : comb) {
+                System.out.print(c);
+            }
+         System.out.println("");
         
         while (inte >0 && !nita(comb, prog)) {
             System.out.println("------------------------------------");
@@ -137,11 +143,6 @@ public class Examen1P1_CristopherSibrian {
         Scanner tick = new Scanner(System.in);
         System.out.print("Ingrese el tamano del arreglo: ");
         int juju = tick.nextInt();
-        
-        
-        
-        
-        
         if (juju <= 5){
             System.out.print("El numero debe ser mayor a 5");
             System.out.println("");
@@ -157,14 +158,9 @@ public class Examen1P1_CristopherSibrian {
         String[] partes = entrada.split(":");
         char direccion = partes[0].charAt(0);
         int posiciones = Integer.parseInt(partes[1]);
-        
-        //System.out.print("Arreglo original");
-        //arreglo(arr);
-        
-        
         arr = rotacion(arr, direccion, posiciones);
         
-        System.out.print("Arreglo con la rotacion: ");
+        System.out.println("Arreglo con la rotacion: ");
         arreglo(arr);
     }
     
